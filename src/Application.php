@@ -8,10 +8,12 @@ class Application
 {
     protected $middlewares = [];
 
-    public function run($request)
+    public function run()
     {
+        $request = Request::capture();
+
         foreach ($this->middlewares as $middleware) {
-            $middleware->handle();
+            $middleware->handle($request);
         }
     }
 

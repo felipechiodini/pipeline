@@ -1,8 +1,10 @@
-FROM php:8.2-fpm
+FROM wyveo/nginx-php-fpm:php82
 
-RUN apt-get update && apt-get install -y \
-    git \
-    zip \
-    unzip
+ENV TZ="America/Sao_Paulo"
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+WORKDIR /var/www/html
+
+COPY . .
+
+RUN mv .deploy/default.conf /etc/nginx/conf.d/ \
+    && mv .deploy/supervisord.conf /etc/

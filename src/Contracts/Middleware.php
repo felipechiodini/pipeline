@@ -2,7 +2,9 @@
 
 namespace App\Contracts;
 
+use App\Request;
+
 interface Middleware
 {
-    public function handle();
+    public function handle(Request $request);
 }

@@ -3,11 +3,14 @@
 namespace App\Middlewares;
 
 use App\Contracts\Middleware;
+use App\Request;
 
 class Version implements Middleware
 {
-    public function handle()
+    public function handle(Request $request)
     {
-        var_dump('Version');
+        if ($request->has('version') === false) {
+            
+        }
     }
 }
